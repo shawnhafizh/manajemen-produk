@@ -57,8 +57,8 @@ function App() {
 
   // Handle edit user
   const handleEdit = (index) => {
-    const user = products[index];
-    setFormData(user);
+    const product = products[index];
+    setFormData(product);
     setIsEditing(true);
     setCurrentUserId(index);
     toggleModal();
@@ -80,12 +80,8 @@ function App() {
     setSortConfig({ key: column, direction });
 
     const sortedData = [...products].sort((a, b) => {
-      if (column === 'age') {
-        return direction === 'ascending' ? a.age - b.age : b.age - a.age;
-      } else if (column === 'status') {
-        return direction === 'ascending'
-          ? a.status.localeCompare(b.status)
-          : b.status.localeCompare(a.status);
+      if (column === 'stock') {
+        return direction === 'ascending' ? a.stock - b.stock : b.stock - a.stock;
       } else {
         return direction === 'ascending'
           ? a[column].localeCompare(b[column])
@@ -113,7 +109,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div>
       <Product        
           products={products} 
           handleEdit={handleEdit} 
