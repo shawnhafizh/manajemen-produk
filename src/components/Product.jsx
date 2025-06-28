@@ -5,26 +5,26 @@ function Product({ products, handleEdit, handleDelete, handleSort, getSortIconCl
         <div className="overflow-x-hidden">
           <div className="inline-block min-w-full ">
             <div className="overflow-hidden">
-              <table className="min-w-full text-left text-md font-light text-surface dark:text-black">
+              <table className="table-fixed w-full min-w-full text-left text-md font-light text-surface dark:text-black">
                 <thead className="border-b border-neutral-200 bg-neutral-100 font-medium/10">
                   <tr>
                     <th
-                      className="px-6 py-4 cursor-pointer text-white"
+                      className="px-6 py-4 cursor-pointer"
                       onClick={() => handleSort('name')}
                     >
                       Nama {getSortIconClass('name')}
                     </th>
                     <th
                       className="px-6 py-4 cursor-pointer"
-                      onClick={() => handleSort('harga')}
+                      onClick={() => handleSort('price')}
                     >
-                      Harga {getSortIconClass('harga')}
+                      Harga {getSortIconClass('price')}
                     </th>
                     <th
                       className="px-6 py-4 cursor-pointer"
-                      onClick={() => handleSort('stok')}
+                      onClick={() => handleSort('stock')}
                     >
-                      Stok {getSortIconClass('stok')}
+                      Stok {getSortIconClass('stock')}
                     </th>
                     <th className="px-6 py-4">Actions</th>
                   </tr>
@@ -33,7 +33,7 @@ function Product({ products, handleEdit, handleDelete, handleSort, getSortIconCl
                   {products.map((product, index) => (
                     <tr key={index} className="border-b border-neutral-200">
                       <td className="whitespace-nowrap px-6 py-4">{product.name}</td>
-                      <td className="whitespace-nowrap px-6 py-4">{product.price}</td>
+                      <td className="whitespace-nowrap px-6 py-4">{Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price)}</td>
                       <td className="whitespace-nowrap px-6 py-4">{product.stock}</td>
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex space-x-3">
@@ -80,7 +80,7 @@ function Product({ products, handleEdit, handleDelete, handleSort, getSortIconCl
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Product
+export default Product;
